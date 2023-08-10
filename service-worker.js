@@ -1,40 +1,36 @@
-// This is a basic service worker that caches the index.html page and all of its resources.
+// pwa.js
 
-// The scope of the service worker is the root directory of the PWA.
-self.scope = '/';
-
-// The install handler is called when the service worker is first registered.
-self.addEventListener('install', function(event) {
-  // Cache the index.html page.
-  event.waitUntil(caches.open('index').then(function(cache) {
-    return cache.add('/index.html');
-  }));
-
-  // Cache all of the resources that are required by the index.html page.
-  var resources = [
-    'style.css',
-    'script.js',
-    'image.png'
-  ];
-  return Promise.all(resources.map(function(resource) {
-    return caches.open('resources').then(function(cache) {
-      return cache.add(resource);
+if ('serviceWorker' in navigator) {
+  // Register the service worker
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(registration => {
+      console.log('Service Worker registered with scope:', registration.scope);
+    })
+    .catch(error => {
+      console.log('Service Worker registration failed:', error);
     });
-  }));
+}
+
+// Service Worker code
+const CACHE_NAME = 'my-pwa-cache-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/styles.css',
+  '/script.js',
+  '/images/icon.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  );
 });
 
-// The activate handler is called when the service worker becomes active.
-self.addEventListener('activate', function(event) {
-  // Delete any old caches that are no longer needed.
-  var oldCaches = ['index', 'resources'];
-  return Promise.all(oldCaches.map(function(cacheName) {
-    return caches.delete(cacheName);
-  }));
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
 });
-
-// The fetch handler is called when the browser makes a request to a resource that is controlled by the service worker.
-self.addEventListener('fetch', function(event) {
-  // If the resource is in the cache, then return the cached version of the resource.
-  event.respondWith(caches.match(event.request));
-});
-    
