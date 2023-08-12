@@ -2,7 +2,7 @@
   "name": "Moriarty",
   "short_name": "Moriarty",
   "id": "moriarty.v1",
-  "start_url": "index.html",
+  "start_url": "https://scapy47.github.io/Web.on",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#FFFFFF",

@@ -1,4 +1,4 @@
-// The service worker file should be named `serviceworker.js`
+/*// The service worker file should be named `serviceworker.js`
 
 // Import the ServiceWorkerRegistration API
 import { ServiceWorkerRegistration } from 'serviceworker-registration';
@@ -36,7 +36,7 @@ sw.addEventListener('fetch', async (event) => {
     // If the request is not for a cached file, fetch the resource from the network
     event.respondWith(await fetch(event.request));
   }
-});
+});*/
 
 
 
@@ -44,7 +44,7 @@ sw.addEventListener('fetch', async (event) => {
 
 
 
-/*// Install the service worker and cache essential assets
+// Install the service worker and cache essential assets
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('your-app-cache').then(cache => {
@@ -66,4 +66,4 @@ self.addEventListener('fetch', event => {
       return response || fetch(event.request);
     })
   );
-});*/
+});
