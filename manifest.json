@@ -2,7 +2,7 @@
   "name": "Moriarty",
   "short_name": "Moriarty",
   "id": "moriarty.v1",
-  "start_url": "https://scapy47.github.io/Web.on",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#FFFFFF",
@@ -477,13 +477,13 @@
   "description": "Download videos from anywhere",
   "screenshots": [
     {
-      "src": "/pwa/screenshot/Red Glow.png",
+      "src": "pwa/screenshot/Red Glow.png",
       "type": "image/png",
       "sizes": "540x720",
       "form_factor": "narrow"
     },
     {
-      "src": "/pwa/screenshot/Red Glow.png",
+      "src": "pwa/screenshot/Red Glow.png",
       "type": "image/jpg",
       "sizes": "720x540",
       "form_factor": "wide"
