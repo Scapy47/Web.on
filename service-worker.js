@@ -1,10 +1,11 @@
-/*// The service worker file should be named `serviceworker.js`
+/*
+// The service worker file should be named `serviceworker.js`
 
 // Import the ServiceWorkerRegistration API
 import { ServiceWorkerRegistration } from 'serviceworker-registration';
 
 // Define the service worker
-const sw = new ServiceWorkerRegistration('serviceworker.js');
+const sw = new ServiceWorkerRegistration('service-worker.js');
 
 // Listen for the install event
 sw.addEventListener('install', async (event) => {
@@ -36,11 +37,8 @@ sw.addEventListener('fetch', async (event) => {
     // If the request is not for a cached file, fetch the resource from the network
     event.respondWith(await fetch(event.request));
   }
-});*/
-
-
-
-
+});
+*/
 
 
 
@@ -67,3 +65,14 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
+
+//installation prompt 
+function handleInstall() {
+  const prompt = window.prompt("Would you like to install this PWA?", "Install");
+
+  if (prompt === "Install") {
+    // Prompt the user to install the PWA.
+    navigator.serviceWorker.promptInstall();
+  }
+}
