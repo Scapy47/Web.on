@@ -67,12 +67,21 @@ self.addEventListener('fetch', event => {
 });
 
 
-//installation prompt 
-function handleInstall() {
-  const prompt = window.prompt("Would you like to install this PWA?", "Install");
+// Listen for the beforeinstallprompt event
+window.addEventListener('beforeinstallprompt', (event) => {
 
-  if (prompt === "Install") {
-    // Prompt the user to install the PWA.
-    navigator.serviceWorker.promptInstall();
-  }
-}
+  // Save the beforeinstallprompt event object
+  const installPrompt = event;
+
+  // Trigger the install prompt
+  installPrompt.prompt();
+
+});
+
+// Respond to app install
+window.addEventListener('oninstall', (event) => {
+
+  // Do something after the app has been installed
+  console.log('App installed');
+
+});
