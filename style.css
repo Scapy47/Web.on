@@ -1,6 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'REM', sans-serif;
+}
 body {
       background-color: #f3f6fd;
     }
-#heading{
-  text-align: center;
+.site_description {
+  text-align: center
 }
