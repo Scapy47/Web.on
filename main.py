@@ -1,1 +1,1 @@
-print ('hello world this from python on web')
+print ('hello world from python on web')
